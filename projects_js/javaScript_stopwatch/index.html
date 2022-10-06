@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body> 
+    <div class="container">
+        <h1 class="texto">CRONOMETRO</h1>
+        <h1 class="texto">CRONOMETRO JAVASCRIPT PURO</h1>
+        <h1 class="texto timer">00:00.0</h1>
+        <div class="container__botoes">
+            <button class="botoes iniciar">Iniciar</button>
+            <button class="botoes parar">Parar</button>
+            <button class="botoes resetar">Resetar</button>
+        </div>
+    </div>
+    
+    <script>
+    var botaoIniciar = document.querySelector('.iniciar');
+    var botaoParar = document.querySelector('.parar');
+    var botaoResetar = document.querySelector('.resetar');
+    var jaIniciou = false;
+    var interval;
+    var decimoSegundo = 0;
+    var segundo = 0;
+    var segundoString = '00'
+    var minutos = 0;
+    var horas = 0;
+
+    botaoIniciar.addEventListener('click', () =>{
+      if (!jaIniciou){
+        jaIniciou = true;
+        interval = setInterval(() => {
+          document.querySelector(".timer").innerHTML = `${horas}${minutos}:${segundoString}.${decimoSegundo}`;
+          decimoSegundo += 1 ;
+          if (decimoSegundo == 10){
+            segundo++;
+            decimoSegundo = 0;
+          }
+          if (segundo < 60){
+            segundoString = ('00' + segundo).slice(-2);
+          }
+          if (segundo == 60){
+            minutos++;
+            segundo = 0;
+          }
+        },100)
+      } 
+    })
+
+    botaoParar.addEventListener('click', () =>{
+      clearInterval(interval);
+      jaIniciou = false;
+    })
+
+    botaoResetar.addEventListener('click', () =>{
+      clearInterval(interval);
+      document.querySelector(".timer").innerHTML = '00:00.0'
+      decimoSegundo = 0;
+      segundoString = '00';
+      segundo = 0;
+      minutos = 0;
+      horas = 0;
+      interval = 0;
+      jaIniciou = false;
+    })
+
+
+
+    </script>
+</body>
+</html>
