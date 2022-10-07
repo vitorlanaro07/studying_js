@@ -1,0 +1,80 @@
+:root{
+    font-size: 16px;
+}
+
+body{
+    background-color: rgb(103, 97, 97);
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculadora_corpo{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.347);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.nome{
+    align-self: center;
+    margin: -.6rem 0 .3rem;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.tela{
+    background-color: aliceblue;
+    display: block;
+    height: 3rem;
+    margin: 1rem 3px 1.5rem;
+    font-size: 2.5rem;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    grid-template-rows: auto auto;
+    grid-template-columns:auto 1fr;
+    gap: 0.3rem
+
+}
+
+.botoes-column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.botao{
+    font-size: 2rem;
+    font-weight: 100;
+    margin: .2rem;
+    width: 6rem;
+    height: 3.5rem;
+    border: none;
+}
+
+.botao:hover{
+    background-color: rgba(213, 48, 89, 0.809);
+}
+
+.botao-div{
+    height: 4.322rem;
+}
+
+.botao-igualdade{
+    height: -webkit-fill-available;
+    background-color: rgba(155, 16, 16, 0.641);
+}
+
+.operador{
+    background-color: rgba(255, 90, 30, 0.891);
+}
