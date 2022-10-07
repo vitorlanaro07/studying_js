@@ -1,46 +1,75 @@
-var operador = '';
-var operando = '';
-var sinalOp = '';
-var jaOperando = false;
-var resultadoOp = '';
+let botao = document.querySelectorAll('.botao');
+let botaoIgualdade = document.querySelector('.botao-igualdade');
+let botaoLimpar = document.querySelector('.limpar');
+var acumulador = '';
+var operacao = '';
 
-function limpaTela(){
+botao.forEach(element => {
+    element.addEventListener('click', () => {
+        acumulador += element.textContent;
+        document.querySelector('.tela').innerHTML = acumulador;
+    })
+});
+
+botaoIgualdade.addEventListener('click', () => {
+    operacao = acumulador.split('=')[0];
+    document.querySelector('.tela').innerHTML = eval(operacao);
+    acumulador = eval(operacao);
+})
+
+botaoLimpar.addEventListener('click', () => {
     document.querySelector('.tela').innerHTML = '';
-    resetaResultado();
-}
+    acumulador = '';
+    operacao = '';
+})
 
-function resetaResultado(){
-    operador = "";
-    operando = '';
-    sinalOp = '';
-    jaOperando = false;
-}
 
-function continuarConta(valor){
-    console.log(valor);
-}
+// var operador = '';
+// var operando = '';
+// var sinalOp = '';
+// var operacao = '';
+// var jaOperando = false;
+// var resultadoOp = '';
+// var continuaComResultado = false;
 
-function acumulador(valor){
-    if(!jaOperando){
-        operando += valor;
-        console.log(operando);
-        document.querySelector('.tela').innerHTML = operando;
-    }else{
-        operador += valor;
-        console.log(operador);
-        document.querySelector('.tela').innerHTML = operador;
-    }
 
-}
 
-function sinal(sinalParametro){
-    sinalOp = sinalParametro;
-    jaOperando = true;
-    console.log(sinalOp);
-}
+// function resetaResultado(){
+//     operador = '';
+//     operando = '';
+//     sinalOp = '';
+//     operacao = '';
+//     continuaComResultado = false;
+//     jaOperando = false;
+// }
 
-function imprimeResultado(){
-    resultadoOp = operando + sinalOp + operador
-    document.querySelector('.tela').innerHTML = eval(resultadoOp);
-    continuarConta(eval(resultadoOp));
-}
+// function continuarConta(valor){
+//     console.log(valor);
+//     continuaComResultado = True
+// }
+
+// function acumulador(valor){
+//     if (!continuaComResultado){
+//       if(!jaOperando){
+//           operando += valor;
+//           operacao += valor;
+//           document.querySelector('.tela').innerHTML = operando;
+//       }else{
+//         operador += valor;
+//         operacao += valor;
+//         document.querySelector('.tela').innerHTML = operacao;
+//       }
+//     } else {
+//         console.log('continuou');
+//     }
+// }
+
+// function sinal(sinalParametro){
+//     jaOperando = true;
+//     operacao += sinalParametro;
+//     document.querySelector('.tela').innerHTML += sinalParametro
+// }
+
+// function imprimeResultado(){
+//     document.querySelector('.tela').innerHTML = eval(operacao);
+// }
