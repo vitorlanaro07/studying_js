@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">JavaScript Drum Kit</h1>
+        <div class="bateria">
+            <img src="drum-img/w.png" alt="" class="bateria">         
+            <img src="drum-img/crash.png" alt="" class="prato-esquerda">
+            <img src="drum-img/hihat-top.png" alt="" class="prato-direita">
+            <span class="keyboard ride" data-key="r">
+                <kbd>R</kbd>
+            </span>
+            <span class="keyboard crash" data-key="e">
+                <kbd>E</kbd>
+            </span>
+            <span class="keyboard hihat-open" data-key="i">
+                <kbd>I</kbd>
+            </span>
+            <span class="keyboard hihat-close" data-key="k">
+                <kbd>K</kbd>
+            </span>
+            <span class="keyboard tom-mid" data-key="g">
+                <kbd>G</kbd>
+            </span>
+            <span class="keyboard tom-high" data-key="h">
+                <kbd>H</kbd>
+            </span>
+            <span class="keyboard snare" data-key="j">
+                <kbd>J</kbd>
+            </span>
+            <span class="keyboard tom-low" data-key="f">
+                <kbd>F</kbd>
+            </span>
+            <span class="keyboard kick2" data-key="v">
+                <kbd>V</kbd>
+            </span>
+            <span class="keyboard kick" data-key="b">
+                <kbd>B</kbd>
+            </span>
+            <audio data-key="e" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/crash.wav"></audio>
+            <audio data-key="r" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/ride.wav"></audio>
+            <audio data-key="i" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/hihat-open.wav"></audio>
+            <audio data-key="k" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/hihat-close.wav"></audio>
+            <audio data-key="f" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/tom-low.wav"></audio>
+            <audio data-key="g" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/tom-mid.wav"></audio>
+            <audio data-key="h" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/tom-high.wav"></audio>
+            <audio data-key="j" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/snare.wav"></audio>
+            <audio data-key="b" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/kick.wav"></audio>
+            <audio data-key="v" src="https://raw.githubusercontent.com/ArunMichaelDsouza/javascript-30-course/master/src/01-javascript-drum-kit/sounds/kick.wav"></audio>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

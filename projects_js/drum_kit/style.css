@@ -1,0 +1,127 @@
+:root{
+    font-size: 16px;
+
+}
+
+body{
+    font-family: 'Handlee', cursive;
+    font-family: 'Pacifico', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo{
+    font-size: 4rem;
+    font-family: 'Pacifico', cursive;
+    color: #cb2026;
+    text-shadow: 1px 1px 2px black;
+    margin: 2rem 0 1rem;
+}
+
+.bateria{
+    position: relative;
+    margin-top: -2rem;
+}
+
+.prato-esquerda{
+    position: absolute;
+    left: 2.7rem;
+    top: 3rem;
+    rotate: -7deg;
+}
+
+.prato-direita{
+    position: absolute;
+    left: 17.7rem;
+    bottom: 14.85rem;
+}
+
+.prato-esquerda--ativo{
+    rotate: 7deg;
+}
+
+.prato-direita--ativo{
+    bottom: 14.5rem;
+}
+
+.keyboard{
+    font-family: 'Handlee', cursive;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    /* padding: 0.1rem 0.5rem 0rem 0.5rem; */
+    width: 1.7rem;
+    height: 1.7rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
+    position: absolute;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ride{
+    left: 8rem;
+    top: 1.3rem;
+}
+
+.crash{
+    left: 3.5rem;
+    top: 1.3rem;
+}
+
+.hihat-open{
+    right: 7.6rem;
+    top: 4rem;
+}
+
+.hihat-close{
+    top: 4rem;
+    right: 3rem;
+}
+
+.tom-mid{
+    top: 8.1rem;
+    left: 10.2rem;
+}
+
+.tom-high{
+    top: 9rem;
+    right: 10.8rem;
+}
+
+.snare{
+    top: 10.3rem;
+    right: 6.6rem;
+}
+
+.tom-low{
+    top: 13rem;
+    left: 6rem;
+}
+
+.kick{
+    top: 13.3rem;
+    left: 14.5rem;
+}
+
+.kick2{
+    top: 13.3rem;
+    left: 11.5rem;
+
+}
+
+.keyboard--ativo{
+    /* width: 2rem;
+    height: 2rem; */
+    transform: scale(1.2);
+    transition: 30ms;
+}
