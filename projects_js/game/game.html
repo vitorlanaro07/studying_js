@@ -16,12 +16,17 @@
   </div> -->
 
 <script>
+  const LIMIT_AREA_X = 400;
+  const LIMIT_AREA_Y = 250;
+  const SIZE_PLAYER_X = 20;
+  const SIZE_PLAYER_Y = 20;
   var myGamePiece;
   var mySound;
 
 
+
   function startGame() {
-    myGamePiece = new component(24, 24, 'red', 230, 120);
+    myGamePiece = new component(SIZE_PLAYER_X, SIZE_PLAYER_Y, 'red', (LIMIT_AREA_X / 2), (LIMIT_AREA_Y / 2));
     mySound = new sound('./sound.mp3');
     myGameArea.start();
  
@@ -30,8 +35,8 @@
   var myGameArea = {
     canvas: document.createElement('canvas'),
     start: function() {
-        this.canvas.width = 480,
-        this.canvas.height = 270,
+        this.canvas.width = LIMIT_AREA_X + SIZE_PLAYER_X,
+        this.canvas.height = LIMIT_AREA_Y + SIZE_PLAYER_Y,
         this.context = this.canvas.getContext('2d'),
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -49,30 +54,30 @@
     }
   }
 
-  // function confereX (x){
-  //   if (this.x > 0) {
-
-  //   }
-  // }
-
+  function conferCoordinate(element, coor, direction){
+    if(direction == 'x'){
+      if(element.x < 0){
+      element.x = 0;
+      }else{
+        element.x = coor;
+      }
+    } else {
+      if(element.y < 0){
+        element.y = 0;
+      }else{
+        element.y = coor;
+      }
+    }
+  }
+  
   function component(width, height, color, x, y){
     this.width = width;
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;
 
-    if (this.x < 0){
-      this.x = 0;
-    }else{
-      this.x = x;
-    }
-
-    if (this.y < 0){
-      this.y = 0;
-    } else{
-      this.y = y;
-    }
-    
+    conferCoordinate(this, x, 'x');
+    conferCoordinate(this, y, 'y');
 
     this.update = function(){
       ctx = myGameArea.context;
@@ -89,16 +94,16 @@
         }
         ctx.fillRect(this.x, this.y, this.width, this.height);
       } 
-      if (this.x >= 455 || this.y >= 245){
-        if (this.x >= 455){
-          this.x = 455;
+      if (this.x >= LIMIT_AREA_X || this.y >= LIMIT_AREA_Y){
+        if (this.x >= LIMIT_AREA_X){
+          this.x = LIMIT_AREA_X;
         } 
-        if (this.y >= 245){
-          this.y = 245;
+        if (this.y >= LIMIT_AREA_Y){
+          this.y = LIMIT_AREA_Y;
         }
         ctx.fillRect(this.x, this.y, this.width, this.height);
       }
-      console.log(this.x, this.y);
+
     }
     this.newPos = function(){
       this.x += this.speedX;
