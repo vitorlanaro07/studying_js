@@ -8,20 +8,23 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body onload="startGame()">
-  <div class="botoes-controle">
+  <!-- <div class="botoes-controle">
     <button class="botao botao-cima" onmousedown="moveup()" onmouseup="stopMove()" ontouchstart="moveup()">Up</button>
     <button class="botao botao-direita" onmousedown="moveright()" onmouseup="stopMove()" ontouchstart="moveright()">Right</button>
     <button class="botao botao-baixo" onmousedown="movedown()" onmouseup="stopMove()" ontouchstart="movedown()">Down</button>
     <button class="botao botao-esquerda" onmousedown="moveleft()" onmouseup="stopMove()" ontouchstart="moveleft()">Left</button>
-  </div>
+  </div> -->
 
 <script>
   var myGamePiece;
+  var mySound;
 
 
   function startGame() {
-    myGamePiece = new component(24, 24, 'red', 10, 10);
+    myGamePiece = new component(24, 24, 'red', 230, 120);
+    mySound = new sound('./sound.mp3');
     myGameArea.start();
+ 
   }
 
   var myGameArea = {
@@ -32,6 +35,14 @@
         this.context = this.canvas.getContext('2d'),
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('keydown', function(e) {
+          myGameArea.keys = (myGameArea.keys || []);
+          myGameArea.keys[e.keyCode] = true;
+          console.log(myGameArea.keys);
+        })
+        window.addEventListener('keyup', function(e) {
+          myGameArea.keys[e.keyCode] = false;
+        })
     },
     clear : function(){
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -56,32 +67,54 @@
     }
   }
 
+  function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    this.sound.volume = 0.2;
+    this.sound.loop = true;
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+  
+  }
+
   function updateGameArea() {
+    mySound.play();
     myGameArea.clear();
+    myGamePiece.speedY = 0;
+    myGamePiece.speedX = 0;
+    if (myGameArea.keys && myGameArea.keys[37]){myGamePiece.speedX = -2.5;}
+    if (myGameArea.keys && myGameArea.keys[38]){myGamePiece.speedY = -2.5;}
+    if (myGameArea.keys && myGameArea.keys[39]){myGamePiece.speedX = 2.5;}
+    if (myGameArea.keys && myGameArea.keys[40]){myGamePiece.speedY = 2.5;}
     myGamePiece.newPos();
     myGamePiece.update(); 
   }
   
-  function moveup(){
-    myGamePiece.speedY -= 2;
-  }
+  // function moveup(){
+  //   myGamePiece.speedY -= 2;
+  // }
 
-  function moveright(){
-    myGamePiece.speedX += 2;
-  }
+  // function moveright(){
+  //   myGamePiece.speedX += 2;
+  // }
 
-  function movedown(){
-    myGamePiece.speedY += 2;
-  }
+  // function movedown(){
+  //   myGamePiece.speedY += 2;
+  // }
   
-  function moveleft(){
-    myGamePiece.speedX -= 2;
-  }
+  // function moveleft(){
+  //   myGamePiece.speedX -= 2;
+  // }
 
-  function stopMove(){
-    myGamePiece.speedY = 0;
-    myGamePiece.speedX = 0;
-  }
+  // function stopMove(){
+  //   myGamePiece.speedY = 0;
+  //   myGamePiece.speedX = 0;
+  // }
 
 </script>
 </body>
