@@ -49,17 +49,56 @@
     }
   }
 
+  // function confereX (x){
+  //   if (this.x > 0) {
+
+  //   }
+  // }
+
   function component(width, height, color, x, y){
     this.width = width;
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;
-    this.x = x;
-    this.y = y;
+
+    if (this.x < 0){
+      this.x = 0;
+    }else{
+      this.x = x;
+    }
+
+    if (this.y < 0){
+      this.y = 0;
+    } else{
+      this.y = y;
+    }
+    
+
     this.update = function(){
       ctx = myGameArea.context;
       ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      //Área limite
+      if (this.x >= 0 && this.y >= 0){   
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      } else if (this.x <= 0 || this.y <= 0) {
+        if (this.x <= 0){
+          this.x = 0;
+        } 
+        if (this.y <= 0){
+          this.y = 0;
+        }
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      } 
+      if (this.x >= 455 || this.y >= 245){
+        if (this.x >= 455){
+          this.x = 455;
+        } 
+        if (this.y >= 245){
+          this.y = 245;
+        }
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+      console.log(this.x, this.y);
     }
     this.newPos = function(){
       this.x += this.speedX;
